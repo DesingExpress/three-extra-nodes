@@ -1,0 +1,47 @@
+{
+  "name": "@user/graphic-extra",
+  "version": "0.1.0",
+  "private": false,
+  "description": "",
+  "license": "MIT",
+  "files": [
+    "build"
+  ],
+  "dependencies": {
+    "@design-express/node-scripts": "1.0.0-alpha.2301311125"
+  },
+  "scripts": {
+    "start": "node-scripts start",
+    "build": "node-scripts build",
+    "pack": "node-scripts pack",
+    "publish": "node-scripts publish",
+    "docs": "node-scripts docs",
+    "setuser": "node-scripts setUser"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "pre_release": false,
+  "readme": "README.md",
+  "sandbox": false,
+  "devDependencies": {
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.12",
+    "@types/react": "^18.0.28"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
