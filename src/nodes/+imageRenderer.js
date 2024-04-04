@@ -25,7 +25,7 @@ export class imageRenderer extends Pure {
     this.addInput("", "boolean");
     this.addInput("", "number");
 
-    this.addOutput("image", "arraybuffer");
+    this.addOutput("image", "blob");
 
     this.addWidget("number", "width", this.properties.width, "width", {
       min: 100,
@@ -73,7 +73,7 @@ export class imageRenderer extends Pure {
     }
   }
 
-  onExecute() {
+  async onExecute() {
     const _scene = this.getInputData(1);
     const _camera = this.getInputData(2);
     const _width = Number(
@@ -149,7 +149,13 @@ export class imageRenderer extends Pure {
     _clonedCamera.updateProjectionMatrix();
     _renderer.render(_clonedScene, _clonedCamera);
 
-    this.setOutputData(1, _canvasElem.toDataURL(`image/${_type}`, _quality));
+    const resolver = { r: () => {} };
+    const waiter = new Promise((r) => {
+      resolver.r = r;
+    });
+    _canvasElem.toBlob((blob) => resolver.r(blob), `image/${_type}`, _quality);
+
+    this.setOutputData(1, await waiter);
 
     _renderer.dispose();
     let mtrl;
