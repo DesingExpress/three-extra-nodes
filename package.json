@@ -1,14 +1,20 @@
 {
-  "name": "@dabeom2/graphic-extra",
-  "version": "0.1.1",
+  "name": "@NEXIVIL/Three-Extra",
+  "version": "0.1.0",
   "private": false,
   "description": "",
   "license": "MIT",
+  "keywords": [
+    "three",
+    "threejs",
+    "image",
+    "exporter"
+  ],
   "files": [
     "build"
   ],
   "dependencies": {
-    "@design-express/node-scripts": "^1.0.0-alpha.2303200436",
+    "@design-express/node-scripts": "^1.1.9",
     "rc-tree": "^5.7.2"
   },
   "scripts": {
@@ -29,6 +35,7 @@
   "readme": "README.md",
   "sandbox": false,
   "devDependencies": {
+    "@design-express/fabrica": "^1.0.1",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.12",
     "@types/react": "^18.0.28"
