@@ -7,7 +7,9 @@ Extended Functionality for [THREE Nodes]()THREE.js
 ```bash
  Three
  └── Extra
-     └── ImageRenderer
+     ├── ImageRenderer
+     └── Components
+         └── Tree
 ```
 
 ## 🔲Include Nodes
@@ -53,6 +55,55 @@ Extended Functionality for [THREE Nodes]()THREE.js
 | Label     | Type   | Description |
 | --------- | ------ | ----------- |
 | **image** | `blob` |             |
+
+---
+
+&nbsp;
+&nbsp;
+
+### `Components/Tree` Node
+
+```litegraph
+{
+  "title": "Tree",
+  "inputs": [
+    { "label": "toUpdate", "type":-1 },
+    { "label": "meshes", "type":"array" },
+    { "label": "sortKeys", "type":"array" },
+    { "label": "toSelected", "type":-1 },
+    { "label": "selectedMesh", "type":"three::mesh,object" }
+    ],
+  "outputs": [
+    { "label": "component", "type":"component" },
+    { "label": "onChangeVisibility", "type":-1 },
+    { "label": "visibility", "type":"boolean" },
+    { "label": "onClick", "type":-1 },
+    { "label": "mesh", "type":"three::mesh,array,object" }
+  ]
+}
+```
+
+#### Slots
+
+##### Inputs
+
+| Label            | Type                 | Description |
+| ---------------- | -------------------- | ----------- |
+| **toUpdate**     | `event`              |             |
+| **meshes**       | `array`              |             |
+| **sortKeys**     | `array`              |             |
+| **toSelected**   | `event`              |             |
+| **selectedMesh** | `three::mesh,object` |             |
+
+##### Outputs
+
+| Label                  | Type                       | Description |
+| ---------------------- | -------------------------- | ----------- |
+| **component**          | `component`                |             |
+| **onChangeVisibility** | `event`                    |             |
+| **visibility**         | `boolean`                  |             |
+| **onClick**            | `event`                    |             |
+| **mesh**               | `three::mesh,array,object` |             |
 
 ---
 

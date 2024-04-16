@@ -1,6 +1,6 @@
 {
   "name": "@NEXIVIL/Three-Extra",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "description": "",
   "license": "MIT",
@@ -15,7 +15,9 @@
   ],
   "dependencies": {
     "@design-express/node-scripts": "^1.1.9",
-    "rc-tree": "^5.7.2"
+    "rc-tree": "^5.8.5",
+    "react-virtualized-auto-sizer": "^1.0.24",
+    "zustand": "^4.5.2"
   },
   "scripts": {
     "start": "node-scripts start",
