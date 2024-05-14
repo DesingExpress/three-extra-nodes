@@ -1,5 +1,5 @@
 import { ImPure } from "@design-express/fabrica";
-import { Group } from "three";
+import { Group, Object3D } from "three";
 export class byLayer extends ImPure {
   static path = "Extra/Extract";
   static title = "ByLayer";
@@ -29,23 +29,31 @@ export class byLayer extends ImPure {
 
   onExecute() {
     if (this.threeGroup) {
-      this.threeGroup.clear?.();
+      // this.threeGroup.clear?.();
     }
     const meshesLike = this.getInputData(1);
-    const _layer = this.getInputData(2) ?? 1;
+    const _layer = this.getInputData(2) ?? this.properties.layer;
 
     if (!meshesLike || _layer === undefined || _layer < 0) return;
+    const __layer = _layer + 1;
 
     const threeGroup = (this.threeGroup = new Group());
 
     if (typeof meshesLike.traverseVisible === "function") {
-      meshesLike.traverseVisible(function (child) {
-        if (child.layers?.mask === _layer) threeGroup.add(child);
+      meshesLike.traverseVisible(function (object) {
+        if (!object.isMesh) return;
+        const _mesh = new Object3D();
+        _mesh.isMesh = true;
+
+        _mesh.geometry = object.geometry.clone();
+        _mesh.geometry.applyMatrix4(object.matrixWorld);
+
+        if (object.layers?.mask === __layer) threeGroup.add(_mesh);
       });
     } else {
-      meshesLike.forEach(function (child) {
-        if (child.layers?.mask === _layer) threeGroup.add(child);
-      });
+      // meshesLike.forEach(function (child) {
+      //   if (child.layers?.mask === __layer) threeGroup.add(child);
+      // });
     }
     this.setOutputData(1, threeGroup);
   }
