@@ -8,8 +8,10 @@ Extended Functionality for [THREE Nodes]()THREE.js
  Three
  └── Extra
      ├── ImageRenderer
-     └── Components
-         └── Tree
+     ├── Components
+     │   └── Tree
+     └── Extract
+         └── ByLayer
 ```
 
 ## 🔲Include Nodes
