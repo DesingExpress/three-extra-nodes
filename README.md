@@ -110,6 +110,41 @@ Extended Functionality for [THREE Nodes]()THREE.js
 &nbsp;
 &nbsp;
 
+### `Extract/ByLayer` Node
+
+```litegraph
+{
+  "title": "ByLayer",
+  "inputs": [
+    { "label": "meshes", "type": "object,array,three::mesh,three::group,three::scene,three::object3d" },
+    { "label": "layer", "type":"number" }
+    ],
+  "outputs": [
+    { "label": "meshes", "type":"object,three::group,three::object3d" }
+  ]
+}
+```
+
+#### Slots
+
+##### Inputs
+
+| Label      | Type                                                                 | Description |
+| ---------- | -------------------------------------------------------------------- | ----------- |
+| **meshes** | `object,array,three::mesh,three::group,three::scene,three::object3d` |             |
+| **meshes** | `number`                                                             |             |
+
+##### Outputs
+
+| Label      | Type                                  | Description |
+| ---------- | ------------------------------------- | ----------- |
+| **meshes** | `object,three::group,three::object3d` |             |
+
+---
+
+&nbsp;
+&nbsp;
+
 ## Loadmap
 
 -
