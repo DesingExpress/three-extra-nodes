@@ -26,6 +26,8 @@ const useTreeStroe = create((set, get) => ({
   keys: [],
   checked: [],
   selected: [],
+  expandedKeys: [],
+  loadedKeys: [],
   setRoot: (meshes, keys, depth = 0) => {
     if ((meshes ?? []).length === 0 || (keys ?? []).length === 0) {
       set({ tree: [], keys });
@@ -39,7 +41,14 @@ const useTreeStroe = create((set, get) => ({
         return { title: k, key: `${k}`, isLeaf: v.length === 0, subMeshes: v };
       }
     );
-    set({ tree, keys, checked: [], selected: [] });
+    set({
+      tree,
+      keys,
+      checked: [],
+      selected: [],
+      expandedKeys: [],
+      loadedKeys: [],
+    });
   },
   setLeaf: (treeNode) => {
     const { tree, keys } = get();
@@ -92,6 +101,12 @@ const useTreeStroe = create((set, get) => ({
     }
     if (_ids.length === 0) return;
     set({ selected: [_ids.join(":")] });
+  },
+  setExpandedKeys: (v) => {
+    set({ expandedKeys: v });
+  },
+  setLoadedKeys: (v) => {
+    set({ loadedKeys: v });
   },
 }));
 

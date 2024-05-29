@@ -76,28 +76,47 @@ function SwitchIcon({ isLeaf, expanded }) {
 }
 
 function TreeComponent({ onChecked }) {
-  const [treeData, checkedKeys, selected, setLeaf, setChecked, setSelected] =
-    useTreeStroe((state) => [
-      state.tree,
-      state.checked,
-      state.selected,
-      state.setLeaf,
-      state.setChecked,
-      state.setSelected,
-    ]);
+  const [
+    treeData,
+    checkedKeys,
+    selected,
+    expandedKeys,
+    loadedKeys,
+    setLeaf,
+    setChecked,
+    setSelected,
+    setExpandedKeys,
+    setLoadedKeys,
+  ] = useTreeStroe((state) => [
+    state.tree,
+    state.checked,
+    state.selected,
+    state.expandedKeys,
+    state.loadedKeys,
+    state.setLeaf,
+    state.setChecked,
+    state.setSelected,
+    state.setExpandedKeys,
+    state.setLoadedKeys,
+  ]);
   function onSelect(info, e) {
     setSelected(info);
-    // console.log(e,info)
     onChecked(e.node.subMeshes, undefined, 4);
   }
 
   function onCheck(checkedKeys, e) {
     setChecked(checkedKeys);
     onChecked(e.node.subMeshes, e.node.checked, 2);
-    // this.setState({
-    //   checkedKeys,
-    // });
   }
+
+  function onExpand(expandedKeys) {
+    setExpandedKeys(expandedKeys);
+  }
+
+  function onLoad(loadedKeys) {
+    setLoadedKeys(loadedKeys);
+  }
+
   function onLoadData(treeNode) {
     return setLeaf(treeNode);
   }
@@ -115,6 +134,10 @@ function TreeComponent({ onChecked }) {
             checkable
             onCheck={onCheck}
             checkedKeys={checkedKeys}
+            onExpand={onExpand}
+            expandedKeys={expandedKeys}
+            onLoad={onLoad}
+            loadedKeys={loadedKeys}
             //   showLine
             virtual
             height={height}

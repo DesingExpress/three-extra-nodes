@@ -30,7 +30,6 @@ export class imageRenderer extends Pure {
       this.triggerSlot(idx);
     };
 
-    // console.log(_meshes, _keys);
     this.setOutputData(1, <TreeComponent onChecked={handleChecked} />);
   }
   onAction(name) {
