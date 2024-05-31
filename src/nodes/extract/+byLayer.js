@@ -35,7 +35,8 @@ export class byLayer extends ImPure {
     const _layer = this.getInputData(2) ?? this.properties.layer;
 
     if (!meshesLike || _layer === undefined || _layer < 0) return;
-    const __layer = _layer + 1;
+    // const __layer = _layer + 1;
+    const __layer = ((1 << _layer) | 0) >>> 0; //
 
     const threeGroup = (this.threeGroup = new Group());
 
